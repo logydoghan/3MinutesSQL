@@ -286,6 +286,7 @@ AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。
 如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。
 如果第一个条件和第二个条件中只要有一个成立，则 OR 运算符显示一条记录。
 
+```sql
 CREATE TABLE books 
 	(
 		编号 INT NOT NULL AUTO_INCREMENT,
@@ -297,7 +298,8 @@ CREATE TABLE books
 		页数 INT,
 		PRIMARY KEY(编号)
 	);
-
+```
+```sql
 INSERT INTO books (书名, 作者姓, 作者名, 发售年份, 存量, 页数)
 VALUES
 ('活着', '余', '华', 1993, 32, 235),
@@ -316,9 +318,13 @@ VALUES
 ('雾都孤儿', '查尔斯', '狄更斯', 1945, 95, 123),
 ('梦的解析', '西格蒙德', '佛洛依德', 1899, 172, 329),
 ('君主论', '尼克罗', '马基雅维利', 1532, 92, 343);
-
-SELECT 书名 FROM books WHERE 作者姓 = '余' OR 作者姓 = '金';
+```
+```sql
+SELECT 书名 FROM books WHERE 作者姓 = '余' OR 作者姓 = ‘金';
+```
+```sql
 SELECT 书名 FROM books WHERE 作者姓 = '余' AND 作者姓 = ‘金';
+```
 
 ### 11 IN NOT IN 语句
 
@@ -525,6 +531,7 @@ SELECT 作者姓, 作者名, AVG(页数) FROM books GROUP BY 作者姓, 作者�
 
 创建orders表：
 
+```sql
 CREATE TABLE orders
 	(
 		订单号 INT NOT NULL AUTO_INCREMENT,
@@ -534,8 +541,11 @@ CREATE TABLE orders
                FOREIGN KEY(编号) REFERENCES books(编号)
 		
 	);
+```
 
+```sql
 DESCRIBE books;
+```
 
 ```sql
 +--------+--------------+------+-----+---------+-------+
@@ -551,7 +561,9 @@ DESCRIBE books;
 +————+———————+———+——+————+——————+————————————————————————
 ```
 
+```sql
 DESCRIBE orders;
+```
 
 ```sql
 +--------+--------------+------+-----+---------+-------+
