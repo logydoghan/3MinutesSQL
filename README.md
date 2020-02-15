@@ -1,15 +1,15 @@
-# 3MinutesSQL
-三分钟SQL
-
+# 三分钟SQL
 URL here
 
-## 1 安装
+## 1 介绍
+
+### 1 下载并安装
 
 ```bash
 docker-compose up -d
 ```
 
-## 数据库
+## 2 - 7 数据库
 
 ### 2 展示，创建与更新数据库
 
@@ -33,10 +33,10 @@ USE bookshelf_db
 SELECT database();
 ```
 
-## 表
+### 3 表
 在关系型数据库中，每个数据库是由一张或数张表组成
 
-### 数据类型
+### 3 数据类型
 ```sql
 VARCHAR(<最大长度>)
 ```
@@ -60,7 +60,7 @@ DESCRIBE cats;
 SHOW COLUMNS FROM cats;
 ```
 
-### 删除表
+### 4 删除表
 ```sql
 DROP TABLE cats;
 ```
@@ -77,7 +77,7 @@ VALUES('小兰', 1);
 SELECT * from cats;
 ```
 
-### 将多个数据插入表
+### 5 将多个数据插入表
 ```sql
 INSERT INTO cats(姓名, 年龄)
 VALUES ('翠花', 2),
@@ -170,7 +170,7 @@ INSERT INTO cats3(年龄) VALUES(13);
 ```
 
 
-## 8 基本CRUD操作 增加(Create)、查询(Retrieve)（重新得到数据）、更新(Update)和删除(Delete)
+## 8 - 10 基本CRUD操作 增加(Create)、查询(Retrieve)（重新得到数据）、更新(Update)和删除(Delete)
 
 
 ### 示例数据
@@ -202,14 +202,14 @@ VALUES ('丘吉尔', '英短', 4),
        ('巴沙', '暹罗', 7);
 ```
 
-## C(R)UD 查询
+### C(R)UD 查询
 
 ```sql
 SELECT * FROM cats;
 ```
 此操作会返回cats的所有属性的数据。
 
-## 8 SELECT FROM 语句
+### 8 SELECT FROM 语句
 
 ```sql
 SELECT 姓名, 年龄 FROM cats;
@@ -237,7 +237,7 @@ SELECT * FROM cats WHERE 编号=年龄 ;
 ```
 以上操作将会返回所有`编号`等于`年龄`的cats
 
-## 9 DISTINCT 语句
+### 9 DISTINCT 语句
 
 DISTINCT 找出表格内的不同资料值的情况
 
@@ -248,7 +248,7 @@ SELECT DISTINCT 品种 FROM cats;
 ```
 
 
-## 10 CR(U)D Update 更新数据
+### 10 CR(U)D Update 更新数据
 
 我们如何修改现有的数据？
 
@@ -264,7 +264,7 @@ UPDATE cats SET 品种='英短' WHERE 品种='美短';
 SELECT * FROM cats;
 ```
 
-## CRU(D) Delete 删除数据
+### 10 CRU(D) Delete 删除数据
 ```sql
 -- 将姓名叫做亚历山大的cats删去
 DELETE FROM cats WHERE 姓名='亚历山大';
@@ -279,7 +279,8 @@ DELETE FROM cats;
 SELECT * FROM cats;
 ```
 
-## 11 AND OR 语句
+## 11 - 22 SQL高级语句
+### 11 AND OR 语句
 
 AND 和 OR 可在 WHERE 子语句中把两个或多个条件结合起来。
 如果第一个条件和第二个条件都成立，则 AND 运算符显示一条记录。
@@ -319,7 +320,7 @@ VALUES
 SELECT 书名 FROM books WHERE 作者姓 = '余' OR 作者姓 = '金';
 SELECT 书名 FROM books WHERE 作者姓 = '余' AND 作者姓 = ‘金';
 
-## 11 IN NOT IN 语句
+### 11 IN NOT IN 语句
 
 IN 操作符允许我们在 WHERE 子句中规定多个值。
 
@@ -327,7 +328,7 @@ IN 操作符允许我们在 WHERE 子句中规定多个值。
 SELECT 书名 FROM books WHERE 发售年份 IN (1899, 1945);
 ```
 
-## 12 BETWEEN AND 语句
+### 12 BETWEEN AND 语句
 
 操作符 BETWEEN ... AND 会选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。
 
@@ -335,7 +336,7 @@ SELECT 书名 FROM books WHERE 发售年份 IN (1899, 1945);
 SELECT 书名 FROM books WHERE 发售年份 BETWEEN 1899 AND 1945;
 ```
 
-## 13 LIKE 语句
+### 13 LIKE 语句
 
 
 LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式。
@@ -350,7 +351,7 @@ SELECT 书名 FROM books WHERE 作者名 LIKE '_树';
 ```
 
 
-## 14 ORDER BY 语句
+### 14 ORDER BY 语句
 
 ORDER BY 语句用于根据指定的列对结果集进行排序。
 * ORDER BY 语句默认按照升序对记录进行排序。
@@ -377,7 +378,7 @@ SELECT 作者名, COUNT(*) FROM books GROUP BY 作者名;
 SELECT 作者姓, 作者名, COUNT(*) FROM books GROUP BY 作者姓, 作者名;
 ```
 
-## 16 LIMIT 语句
+### 16 LIMIT 语句
 
 如果返回的结果众多，我们可以通过LIMIT语句来限制返回的行数。
 
@@ -402,7 +403,7 @@ SELECT COUNT(*) as '书本数量' FROM books;
 你会发现返回结果中的栏名变成了书本数量
 
 
-## 聚合函数 Aggregate functions
+### 聚合函数 Aggregate functions
 
 Aggregate 函数的操作面向一系列的值，并返回一个单一的值。
 
@@ -563,8 +564,8 @@ DESCRIBE orders;
 ```
 
 
-
-## 23 INNER JOIN (JOIN) 语句
+## 23 - 24 表格链接
+### 23 INNER JOIN (JOIN) 语句
 
 内部连接 (inner join)，在这个情况下，要两个表格内都有同样的值，那一笔资料才会被选出。
 
@@ -603,7 +604,7 @@ ON books.编号=orders.书编号;
 ```
 
 
-## 24 LEFT JOIN
+### 24 LEFT JOIN
 
 LEFT JOIN 关键字会从左表 (table_name1) 那里返回所有的行，即使在右表 (table_name2) 中没有匹配的行。
 
@@ -614,7 +615,7 @@ LEFT JOIN orders
 ON books.编号=orders.书编号;
 ```
 
-## 24 FULL JOIN
+### 24 FULL JOIN
 
 只要其中某个表存在匹配，FULL JOIN 关键字就会返回行。
 
@@ -627,7 +628,7 @@ ON books.编号=orders.书编号;
 
 * MYSQL 不支持FULL JOIN
 
-## Strings Functions
+## 25 - 30 其他高级操作
 
 ### 25 CONCAT 语句
 CONCAT方法用于连接两个字段
@@ -638,7 +639,7 @@ SELECT CONCAT(作者姓, 作者名) as '作者' from books;
 ```
 
 
-## 26 SUBSTRING 语句
+### 26 SUBSTRING 语句
 
 取字符串的片段：
 ```sql
@@ -669,7 +670,7 @@ SELECT SUBSTRING('Hello World', 7);
 ```
 
 
-## 27 UNION 语句
+### 27 UNION 语句
 
 UNION 操作符用于合并两个或多个 SELECT 语句的结果集。
 
@@ -703,7 +704,7 @@ union
 select 书名 from kidbooks;
 ```
 
-## 28 CASE 语句
+### 28 CASE 语句
 
 CASE 语句可以帮助我们通过一些限制条件而对结果进行筛选
 
@@ -722,7 +723,7 @@ FROM books;
 
 "存货信息" 是用到 CASE 那个字段的字段别名。
 
-## 29 Subquery 子查询
+### 29 Subquery 子查询
 
 我们可以在一个 SQL 语句中放入另一个 SQL 语句。当我们在 WHERE 子句或 HAVING 子句中插入另一个 SQL 语句时，我们就有一个子查询 (subquery) 的架构。 子查询的作用是什么呢？它可以被用来连接表格。有的时候子查询是唯一能够连接两个表格的方式。 子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。子查询用于为主查询返回其所需数据，或者对检索数据进行进一步的限制。
 
@@ -733,7 +734,7 @@ SELECT avg(发售年份) FROM books AS 平均年份 WHERE 编号 IN
 (SELECT 书编号 FROM orders WHERE 价格 > 30);
 ```
 
-## 30 View 视图
+### 30 View 视图
 
 
 视图或者视观表 (Views) 可以被当作是虚拟表格。它跟表格的不同是，表格中有实际储存资
@@ -755,7 +756,7 @@ SELECT 书名 FROM books WHERE 作者名 LIKE '_树';
 SELECT * FROM 示例视图;
 ```
 
-## 30 Index 索引
+### 30 Index 索引
 
 索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。数据库的索引同书籍后面的索引非常相像。
 
